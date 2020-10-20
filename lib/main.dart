@@ -5,20 +5,22 @@ void main() => runApp(MaterialApp(
     ));
 
 class Home extends StatelessWidget {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TEST'),
+        title: Text('Hello I am AKash '),
         centerTitle: true,
-        backgroundColor: Colors.red[600],
+        backgroundColor: Colors.lightBlue[400],
       ),
-      body: Center(
-        child: Image(
-          image: AssetImage('assets/download.jpeg'),
-        ),
+      body: Container(
+        color: Colors.grey[600],
+        // child: Text('hello'),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          print('you');
+        },
         child: Text('click'),
         backgroundColor: Colors.red[600],
       ),
