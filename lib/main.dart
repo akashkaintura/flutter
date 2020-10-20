@@ -21,20 +21,50 @@ class Home extends StatelessWidget {
       //   child: Text('hello'),
       // ),
 
-      body: Row(
+      // body: Row(
+      //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //   crossAxisAlignment: CrossAxisAlignment.baseline,
+      //   children: <Widget>[
+      //     Text('hello'),
+      //     FlatButton(
+      //       onPressed: () {},
+      //       color: Colors.amber,
+      //       child: Text('click me'),
+      //     ),
+      //     Container(
+      //       color: Colors.cyan,
+      //       padding: EdgeInsets.all(20),
+      //       child: Text('Isniifjdsh'),
+      //     ),
+      //   ],
+      // ),
+
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.baseline,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Text('hello'),
-          FlatButton(
-            onPressed: () {},
-            color: Colors.amber,
-            child: Text('click me'),
-          ),
-          Container(
-            color: Colors.cyan,
-            padding: EdgeInsets.all(20),
-            child: Text('Isniifjdsh'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text('hello'),
+              Text('World'),
+              Container(
+                padding: EdgeInsets.all(20),
+                color: Colors.amber,
+                child: Text('One'),
+              ),
+              Container(
+                padding: EdgeInsets.all(20),
+                color: Colors.pink,
+                child: Text('two'),
+              ),
+              Container(
+                padding: EdgeInsets.all(20),
+                color: Colors.blue,
+                child: Text('three'),
+              )
+            ],
           ),
         ],
       ),
