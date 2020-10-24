@@ -1,107 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:id_card/qoute.dart';
+import 'package:id_card/qoute_card.dart';
 
-void main() => runApp(MaterialApp(
-      home: MyIdCard(),
-    ));
+void main() => runApp(MaterialApp(home: QuoteList()));
 
-class MyIdCard extends StatefulWidget {
+class QuoteList extends StatefulWidget {
   @override
-  _MyIdCardState createState() => _MyIdCardState();
+  _QuoteListState createState() => _QuoteListState();
 }
 
-class _MyIdCardState extends State<MyIdCard> {
-  int compLevel = 0;
+class _QuoteListState extends State<QuoteList> {
+  List<Quote> quotes = [
+    Quote(
+        author: 'Oscar Wilde',
+        text: 'Be yourself; everyone else is already taken'),
+    Quote(
+        author: 'Oscar Wilde',
+        text: 'I have nothing to declare except my genius'),
+    Quote(
+        author: 'Oscar Wilde',
+        text: 'The truth is rarely pure and never simple')
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text(' ID card'),
+        title: Text('Awesome Quotes'),
         centerTitle: true,
-        backgroundColor: Colors.grey[850],
-        elevation: 0,
+        backgroundColor: Colors.redAccent,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            compLevel += 1;
-          });
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.blueAccent[400],
-        elevation: 0,
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/akash.jpg'),
-                radius: 40,
-              ),
-            ),
-            Divider(
-              height: 50,
-              color: Colors.blue[800],
-            ),
-            Text(
-              'Name',
-              style: TextStyle(
-                color: Colors.white,
-                letterSpacing: 2,
-                fontSize: 18,
-              ),
-            ),
-            Text(
-              'Akash Kaintura',
-              style: TextStyle(
-                  color: Colors.amberAccent[200],
-                  letterSpacing: 2,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 30),
-            Text(
-              'Current Competency',
-              style: TextStyle(
-                color: Colors.white,
-                letterSpacing: 2,
-                fontSize: 18,
-              ),
-            ),
-            Text(
-              '$compLevel',
-              style: TextStyle(
-                  color: Colors.amberAccent[200],
-                  letterSpacing: 2,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 30),
-            Row(
-              children: <Widget>[
-                Icon(
-                  Icons.email,
-                  color: Colors.grey[400],
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Akashkaintura@yahoo.com',
-                  style: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 18,
-                    letterSpacing: 1,
-                  ),
-                )
-              ],
-            ),
-          ],
-        ),
+      body: Column(
+        children: quotes
+            .map((quote) => QuoteCard(
+                quote: quote,
+                delete: () {
+                  setState(() {
+                    quotes.remove(quote);
+                  });
+                }))
+            .toList(),
       ),
     );
   }
